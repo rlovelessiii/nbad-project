@@ -23,6 +23,6 @@
             <br>
             <button type="submit" form="loginForm">Login</button>
         </form>        
-        <p><a href="" >New user? Click here to register</a></p>    
+        <p><a href="">New user? Click here to register</a></p>    
     </body>
 </html>
