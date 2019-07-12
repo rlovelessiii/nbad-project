@@ -1,0 +1,28 @@
+
+/* 
+    Created on : Jul 12, 2019, 9:25:37 AM
+    Author     : bobbysmedley
+*/
+
+h1 {
+    font-family: Arial;
+    color: cadetblue;
+}
+
+#loginForm label{
+    display: inline-block;
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 14px;
+    margin: 5px 0px 5px 0px;
+    width: 120px;
+}
+
+#loginForm button {
+    display: inline-block;
+    margin-left: 210px;
+    border: 1px outset darkgray;
+    background-color: whitesmoke;
+    height: auto;
+    width: auto;
+}
