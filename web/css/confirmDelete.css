@@ -5,31 +5,19 @@
 */
 
 h1 {
-    font-family: Arial;
-    color: cadetblue;
     margin: 0px 0px 10px 0px;
 }
 
 #deleteForm label{
     display: inline-block;
     font-weight: bold;
-    font-family: Arial;
     font-size: 14px;
     margin: 5px 0px 5px 0px;
     width: 120px;
 }
 
-p {
-    font-family: Arial;
-}
-
 #deleteForm button {
     display: inline-block;
-    border: 1px outset darkgray;
-    background-color: whitesmoke;
     height: auto;
     width: 80px;
-}
-
-#buttons {
 }

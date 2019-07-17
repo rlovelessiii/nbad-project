@@ -1,0 +1,19 @@
+/* 
+    Author     : Richard Loveless III
+*/
+th {
+    text-align: left;
+}
+
+th, td {
+    padding: 8px;
+}
+
+table {
+    width: 75%;
+}
+
+.price {
+    text-align: right;
+}
+

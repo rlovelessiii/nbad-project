@@ -3,12 +3,6 @@
     Created on : Jul 12, 2019, 11:05:00 AM
     Author     : bobbysmedley
 */
-
-h1 {
-    font-family: Arial;
-    color: cadetblue;
-}
-
 #productForm label{
     display: inline-block;
     font-weight: bold;
@@ -26,23 +20,10 @@ h1 {
     float: left;
 }
 
-p {
-    font-family: Arial;
-}
-
 textarea {
     width: 160px;
     height: 50px;
     margin-left: 4px;
-    border:1px solid lightgray;
-}
-
-#productForm button {
-    display: inline-block;
-    border: 1px outset darkgray;
-    background-color: whitesmoke;
-    height: auto;
-    width: auto;
 }
 
 #buttons {
