@@ -4,15 +4,9 @@
     Author     : bobbysmedley
 */
 
-h1 {
-    font-family: Arial;
-    color: cadetblue;
-}
-
 #signupForm label{
     display: inline-block;
     font-weight: bold;
-    font-family: Arial;
     font-size: 14px;
     margin: 5px 0px 5px 0px;
     width: 120px;
@@ -21,8 +15,6 @@ h1 {
 #signupForm button {
     display: inline-block;
     margin-left: 200px;
-    border: 1px outset darkgray;
-    background-color: whitesmoke;
     height: auto;
     width: auto;
 }
