@@ -27,31 +27,31 @@
               <td class="code">8601</td>
               <td class="desc">86 (the band) - True Life Songs and Pictures</td>
               <td class="price">$15.95</td>
-              <td class="edit"><a href="">Edit</a></td>
-              <td class="delete"><a href="">Delete</a></td>
+              <td class="edit" ><a href="/nbadProject/productManagement?action=displayProduct">Edit</a></td>
+              <td class="delete"><a href="/nbadProject/productManagement?action=deleteProduct">Delete</a></td>
             </tr>
             <tr>
               <td class="code">pf01</td>
               <td class="desc">Paddlefoot - The first CD</td>
               <td class="price">$12.95</td>
-              <td class="edit"><a href="">Edit</a></td>
-              <td class="delete"><a href="">Delete</a></td>
+              <td class="edit"><a href="/nbadProject/productManagement?action=displayProduct">Edit</a></td>
+              <td class="delete"><a href="/nbadProject/productManagement?action=deleteProduct">Delete</a></td>
             </tr>
             <tr>
               <td class="code">pf02</td>
               <td class="desc">Paddlefoot - The second CD</td>
               <td class="price">$14.95</td>
-              <td class="edit"><a href="">Edit</a></td>
-              <td class="delete"><a href="">Delete</a></td>
+              <td class="edit"\><a href="/nbadProject/productManagement?action=displayProduct">Edit</a></td>
+              <td class="delete"><a href="/nbadProject/productManagement?action=deleteProduct">Delete</a></td>
             </tr>
             <tr>
               <td class="code">jr01</td>
               <td class="desc">Joe Rut - Genuine Wood Grained Finish</td>
               <td class="price">$14.95</td>
-              <td class="edit"><a href="">Edit</a></td>
-              <td class="delete"><a href="">Delete</a></td>
+              <td class="edit"><a href="/nbadProject/productManagement?action=displayProduct">Edit</a></td>
+              <td class="delete"><a href="/nbadProject/productManagement?action=deleteProduct">Delete</a></td>
             </tr>
         </table>
-        <button type="button">Add Product</button>
+            <button onclick="window.location.href = '/nbadProject/productManagement?action=displayProduct'">Add Product</button>
     </body>
 </html>
