@@ -68,7 +68,12 @@ public class MembershipServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        User user = new User();
+        user.setFirstName(request.getParameter("firstname"));
+        user.setLastName(request.getParameter("lastname"));
+        user.setEmail(request.getParameter("email"));
+        user.setPassword(request.getParameter("password"));
     }
 
     /**
