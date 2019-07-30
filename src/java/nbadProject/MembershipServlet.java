@@ -6,12 +6,13 @@
 package nbadProject;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,30 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MembershipServlet", urlPatterns = {"/MembershipServlet"})
 public class MembershipServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-            String action = request.getParameter("action");
-
-                if(action.equals("login")){
-                    getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-                }
-                else if(action.equals("signup")){
-                    getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
-                }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    
+    ArrayList<User> users = new ArrayList();
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -54,7 +34,24 @@ public class MembershipServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String url = "";
+        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+
+        if(action.equals("login")){
+            url = "/login.jsp";
+        }
+        else if (action.equals("logout")) {
+            url = "/index.jsp";
+            session.removeAttribute("loggedIn");
+        }
+        else if(action.equals("signup")){
+            url = "/signup.jsp";
+        }
+        
+        getServletContext().getRequestDispatcher(url).forward(request, response);
+                
     }
 
     /**
@@ -69,11 +66,39 @@ public class MembershipServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        User user = new User();
-        user.setFirstName(request.getParameter("firstname"));
-        user.setLastName(request.getParameter("lastname"));
-        user.setEmail(request.getParameter("email"));
-        user.setPassword(request.getParameter("password"));
+        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
+
+        if(action.equals("login")){
+            for (User user: users) {
+                if (user.getPassword().equals(request.getParameter("password"))) {
+                    session.setAttribute("user", user);
+                    getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
+                }
+            }
+            response.sendRedirect("/nbadProject/membership?action=login");
+        }
+        else if(action.equals("signup")){
+            
+            String firstName = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            
+            if (firstName.equals("") || lastName.equals("") || email.equals("") || password.equals("") || !email.contains("@") || password.length() < 8) {
+                getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
+            }
+            
+            User user = new User();
+            user.setFirstName(request.getParameter("firstname"));
+            user.setLastName(request.getParameter("lastname"));
+            user.setEmail(request.getParameter("email"));
+            user.setPassword(request.getParameter("password"));
+            users.add(user);
+            session.setAttribute("users", users);
+            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+        }
+        
     }
 
     /**

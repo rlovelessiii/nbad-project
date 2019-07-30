@@ -4,6 +4,7 @@
     Author     : bobbysmedley
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,22 +15,22 @@
         <link rel="stylesheet" type="text/css" href="css/product.css">
     </head>
     <body>
-        <p>User <a href="" >Logout</a></p>
+        <p>User <a href="/nbadProject/membership?action=logout">Logout</a></p>
         <h1>Product</h1>
-        <form id="productForm">
-            <label for="code">Code:</label>
-            <input type="text" name="code" class="text">
+        <form id="productForm" method="post" action="/nbadProject/productManagement?action=addProduct&productCode=<c:out value='${code}' />">
+              <label for="code">Code:</label>
+            <input type="text" name="code" class="text" value="<c:out value="${code}" />" required>
             <br>
             <label for="description" id="descriptionLabel">Description:</label>
-            <textarea name="description" cols="30" rows="10"></textarea>
+            <textarea name="description" cols="30" rows="10"><c:out value="${description}" /></textarea>
             <br>
             <label for="price">Price:</label>
-            <input type="text" name="price" class="text">
+            <input name="price" type="number" step="0.01" min="0" class="text" value="<c:out value="${price}" />" required>
             <br>
-            <div id="buttons">
-                <button type="submit" form="productForm">Update Product</button>
-                <button type="submit" form="productForm">View Products</button>
-            </div>
         </form>
+        <div id="buttons">
+            <button type="submit" form="productForm">Update Product</button>
+            <button onclick="window.location.href = '/nbadProject/productManagement?action=displayProducts'">View Products</button>
+        </div>
     </body>
 </html>

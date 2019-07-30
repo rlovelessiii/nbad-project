@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form id="loginForm">
+        <form id="loginForm" method="post" action="/nbadProject/membership?action=login">
             <label for="username">Username</label>
             <input type="text" name="username">
             <br>
@@ -24,6 +24,6 @@
             <br>
             <button type="submit" form="loginForm">Login</button>
         </form>        
-        <p><a href="">New user? Click here to register</a></p>    
+        <p><a href="/nbadProject/membership?action=signup">New user? Click here to register</a></p>    
     </body>
 </html>

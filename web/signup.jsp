@@ -15,21 +15,21 @@
     </head>
     <body>
         <h1>Sign-up form</h1>
-        <form id="signupForm">
+        <form id="signupForm" method="post" action="/nbadProject/membership?action=signup">
             <label for="firstname">First Name</label>
-            <input type="text" name="firstname">
+            <input type="text" name="firstname" required>
             <br>
             <label for="lastname">Last Name</label>
-            <input type="text" name="lastname">
+            <input type="text" name="lastname" required>
             <br>
             <label for="email">Email</label>
-            <input type="text" name="email">
+            <input type="email" name="email" required>
             <br>
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
             <br>
             <label for="password">Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" minlength="8" required>
             <br>
             <button type="submit" form="signupForm">Sign up</button>
         </form>        
