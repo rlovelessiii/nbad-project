@@ -27,7 +27,7 @@ public class ProductTable {
     public static List<Product> selectProducts() {
         
         List<Product> list = new LinkedList();
-        String query = "SELECT * FROM product";
+        String query = "SELECT * FROM products";
         
         try {
             con = DriverManager.getConnection(url, username, password);
@@ -51,7 +51,7 @@ public class ProductTable {
     public static Product selectProduct(String productCode) {
         
         Product product = null;
-        String query = "SELCT * FROM product WHERE code = ?";
+        String query = "SELECT * FROM products WHERE code = ?";
         
         try {
             con = DriverManager.getConnection(url, username, password);
@@ -75,7 +75,7 @@ public class ProductTable {
     public static boolean exists(String productCode) {
         
         boolean exists = false;
-        String query = "SELCT * FROM product WHERE code = ?";
+        String query = "SELCT * FROM products WHERE code = ?";
         
         try {
             con = DriverManager.getConnection(url, username, password);
@@ -103,7 +103,7 @@ public class ProductTable {
 
     public static void insertProduct(Product product) {
         
-        String query = "INSERT INTO product (code,description,price) VALUES (?,?,?)";
+        String query = "INSERT INTO products (code,description,price) VALUES (?,?,?)";
         
         try {
             con = DriverManager.getConnection(url, username, password);
@@ -121,7 +121,7 @@ public class ProductTable {
 
     public static void updateProduct(Product product) {
         
-        String query = "UPDATE product SET description = ?, price = ? WHERE code = ?";
+        String query = "UPDATE products SET description = ?, price = ? WHERE code = ?";
         
         try {
             con = DriverManager.getConnection(url, username, password);
@@ -139,7 +139,7 @@ public class ProductTable {
 
     public static void deleteProduct(Product product) {
         
-        String query = "DELETE FROM product WHERE code = ?";
+        String query = "DELETE FROM products WHERE code = ?";
         
         try {
             con = DriverManager.getConnection(url, username, password);
