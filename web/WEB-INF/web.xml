@@ -4,14 +4,14 @@
         <servlet-name>MembershipServlet</servlet-name>
         <servlet-class>nbadProject.MembershipServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ProductManagementServlet</servlet-name>
-        <servlet-class>nbadProject.ProductManagementServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>MembershipServlet</servlet-name>
         <url-pattern>/membership</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ProductManagementServlet</servlet-name>
+        <servlet-class>nbadProject.ProductManagementServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ProductManagementServlet</servlet-name>
         <url-pattern>/productManagement</url-pattern>

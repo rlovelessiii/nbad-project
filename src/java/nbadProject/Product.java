@@ -11,7 +11,13 @@ public class Product implements Serializable {
         code = "";
         description = "";
         price = 0;    
-    }    
+    }
+    
+    public Product(String code, String description, Double price) {
+        this.code = code;
+        this.description = description;
+        this.price = price;
+    }
     
     public void setCode(String code) {
         this.code = code;    
