@@ -16,8 +16,8 @@
     <body>
         <h1>Login</h1>
         <form id="loginForm" method="post" action="/nbadProject/membership?action=login">
-            <label for="username">Username</label>
-            <input type="text" name="username">
+            <label for="username">Email</label>
+            <input type="text" name="email">
             <br>
             <label for="password">Password</label>
             <input type="password" name="password">

@@ -21,8 +21,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "MembershipServlet", urlPatterns = {"/MembershipServlet"})
 public class MembershipServlet extends HttpServlet {
     
-    ArrayList<User> users = new ArrayList();
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -70,7 +68,9 @@ public class MembershipServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if(action.equals("login")){
-            for (User user: users) {
+            String email = request.getParameter("email");
+            User user = UserTable.getUser(email);
+            if (user != null) {
                 if (user.getPassword().equals(request.getParameter("password"))) {
                     session.setAttribute("user", user);
                     getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
@@ -94,8 +94,7 @@ public class MembershipServlet extends HttpServlet {
             user.setLastName(request.getParameter("lastname"));
             user.setEmail(request.getParameter("email"));
             user.setPassword(request.getParameter("password"));
-            users.add(user);
-            session.setAttribute("users", users);
+            UserTable.addRecord(user);
             getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
         }
         

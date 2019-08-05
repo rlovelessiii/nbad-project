@@ -6,7 +6,7 @@
 package nbadProject;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +18,6 @@ import javax.servlet.http.HttpSession;
  * @author bobbysmedley
  */
 public class ProductManagementServlet extends HttpServlet {
-
-    ArrayList<Product> products = new ArrayList();
     
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -44,6 +42,7 @@ public class ProductManagementServlet extends HttpServlet {
             
             switch (action) {
                 case "displayProducts":
+                    List<Product> products = ProductTable.selectProducts();
                     session.removeAttribute("code");
                     session.removeAttribute("description");
                     session.removeAttribute("price");
@@ -51,26 +50,24 @@ public class ProductManagementServlet extends HttpServlet {
                     break;
                 case "displayProduct":
                     productCode = request.getParameter("code");
-                    for (Product product: products) {
-                        if (productCode.equals(product.getCode())) {
-                            session.setAttribute("code", product.getCode());
-                            session.setAttribute("description", product.getDescription());
-                            session.setAttribute("price", product.getPrice());
-                            break;
-                        }
+                    if (ProductTable.exists(productCode)) {
+                        Product product = ProductTable.selectProduct(productCode);
+                        session.setAttribute("code", product.getCode());
+                        session.setAttribute("description", product.getDescription());
+                        session.setAttribute("price", product.getPrice());
+                        break;
                     } // fall through
                 case "addProduct":
                     url = "/product.jsp";
                     break;
                 case "deleteProduct":
                     productCode = request.getParameter("code");
-                    for (Product product: products) {
-                        if (productCode.equals(product.getCode())) {
-                            session.setAttribute("code", product.getCode());
-                            session.setAttribute("description", product.getDescription());
-                            session.setAttribute("price", product.getPrice());
-                            break;
-                        }
+                    if (ProductTable.exists(productCode)) {
+                        Product product = ProductTable.selectProduct(productCode);
+                        session.setAttribute("code", product.getCode());
+                        session.setAttribute("description", product.getDescription());
+                        session.setAttribute("price", product.getPrice());
+                        break;
                     }
                     url = "/confirmDelete.jsp";
                     break;
@@ -114,27 +111,22 @@ public class ProductManagementServlet extends HttpServlet {
                         product.setCode(code);
                         product.setDescription(description);
                         product.setPrice(Double.valueOf(price));
-                        products.add(product);
+                        ProductTable.insertProduct(product);
                     }
                     else { // update product
-                        for (Product product: products) {
-                            if (productCode.equals(product.getCode())) {
-                                product.setCode(code);
-                                product.setDescription(description);
-                                product.setPrice(Double.valueOf(price));
-                            }
+                        if (ProductTable.exists(productCode)) {
+                            Product product = ProductTable.selectProduct(productCode);
+                            product.setCode(code);
+                            product.setDescription(description);
+                            product.setPrice(Double.valueOf(price));
                         }
                     }
-                    
-                    session.setAttribute("products", products);
                     getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
                     break;
                 case "deleteProduct":
-                    for (Product product: products) {
-                        if (productCode.equals(product.getCode())) {
-                            products.remove(product);
-                            break;
-                        }
+                    if (ProductTable.exists(productCode)) {
+                        Product product = ProductTable.selectProduct(productCode);
+                        ProductTable.deleteProduct(product);
                     }
                     getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
                     break;

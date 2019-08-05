@@ -75,7 +75,7 @@ public class ProductTable {
     public static boolean exists(String productCode) {
         
         boolean exists = false;
-        String query = "SELCT * FROM products WHERE code = ?";
+        String query = "SELECT * FROM products WHERE code = ?";
         
         try {
             con = DriverManager.getConnection(url, username, password);
