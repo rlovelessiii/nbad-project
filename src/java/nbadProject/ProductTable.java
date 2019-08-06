@@ -15,7 +15,7 @@ public class ProductTable {
     
     static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         }
         catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
@@ -111,7 +111,7 @@ public class ProductTable {
             ps.setString(1, product.getCode());
             ps.setString(2, product.getDescription());
             ps.setDouble(3, product.getPrice());
-            ps.executeQuery();
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             System.out.println(e);
@@ -129,7 +129,7 @@ public class ProductTable {
             ps.setString(1, product.getDescription());
             ps.setDouble(2, product.getPrice());
             ps.setString(3, product.getCode());
-            ps.executeQuery();
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             System.out.println(e);
@@ -145,7 +145,7 @@ public class ProductTable {
             con = DriverManager.getConnection(url, username, password);
             ps = con.prepareStatement(query);
             ps.setString(1, product.getCode());
-            ps.executeQuery();
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             System.out.println(e);

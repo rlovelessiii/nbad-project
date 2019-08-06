@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/src/java/nbadProject/User.java</file>
-            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/src/java/nbadProject/UserTable.java</file>
+            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/web/product.jsp</file>
+            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/src/java/nbadProject/ProductManagementServlet.java</file>
+            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/web/products.jsp</file>
             <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/src/java/nbadProject/ProductTable.java</file>
+            <file>file:/C:/Users/Richa/Documents/GitHub/nbad-project/web/confirmDelete.jsp</file>
         </group>
     </open-files>
 </project-private>

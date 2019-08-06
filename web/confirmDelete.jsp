@@ -17,10 +17,10 @@
     <body>
         <p>User <a href="/nbadProject/membership?action=logout">Logout</a></p>
         <h1>Are you sure you want to delete this product?</h1>
-        <form id="deleteForm" method="post" action="/nbadProject/productManagement?action=deleteProduct&productCode=<c:out value='${code}' />">
-            <p><strong>Code: </strong><c:out value="${code}" /></p>
-            <p><strong>Description: </strong><c:out value="${description}" /></p>
-            <p><strong>Price: </strong><c:out value="${price}" /></p>
+        <form id="deleteForm" method="post" action="/nbadProject/productManagement?action=deleteProduct&productCode=<c:out value='${requestScope.code}' />">
+            <p><strong>Code: </strong><c:out value="${requestScope.code}" /></p>
+            <p><strong>Description: </strong><c:out value="${requestScope.description}" /></p>
+            <p><strong>Price: </strong><c:out value="${requestScope.price}" /></p>
         </form>
         <div id="buttons">
             <button type="submit" form="deleteForm">Yes</button>

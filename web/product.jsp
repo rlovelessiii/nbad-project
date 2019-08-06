@@ -17,15 +17,15 @@
     <body>
         <p>User <a href="/nbadProject/membership?action=logout">Logout</a></p>
         <h1>Product</h1>
-        <form id="productForm" method="post" action="/nbadProject/productManagement?action=addProduct&productCode=<c:out value='${code}' />">
+        <form id="productForm" method="post" action="/nbadProject/productManagement?action=addProduct&productCode=<c:out value='${requestScope.code}' />">
               <label for="code">Code:</label>
-            <input type="text" name="code" class="text" value="<c:out value="${code}" />" required>
+            <input type="text" name="code" class="text" value="<c:out value="${requestScope.code}" />" required>
             <br>
             <label for="description" id="descriptionLabel">Description:</label>
-            <textarea name="description" cols="30" rows="10"><c:out value="${description}" /></textarea>
+            <textarea name="description" cols="30" rows="10"><c:out value="${requestScope.description}" /></textarea>
             <br>
             <label for="price">Price:</label>
-            <input name="price" type="number" step="0.01" min="0" class="text" value="<c:out value="${price}" />" required>
+            <input name="price" type="number" step="0.01" min="0" class="text" value="<c:out value="${requestScope.price}" />" required>
             <br>
         </form>
         <div id="buttons">

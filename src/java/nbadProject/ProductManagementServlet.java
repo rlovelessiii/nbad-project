@@ -39,35 +39,30 @@ public class ProductManagementServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         
         if (user != null) {
-            
             switch (action) {
                 case "displayProducts":
                     List<Product> products = ProductTable.selectProducts();
-                    session.removeAttribute("code");
-                    session.removeAttribute("description");
-                    session.removeAttribute("price");
+                    request.setAttribute("products", products);
                     url = "/products.jsp";
                     break;
                 case "displayProduct":
-                    productCode = request.getParameter("code");
+                    productCode = request.getParameter("productCode");
                     if (ProductTable.exists(productCode)) {
                         Product product = ProductTable.selectProduct(productCode);
-                        session.setAttribute("code", product.getCode());
-                        session.setAttribute("description", product.getDescription());
-                        session.setAttribute("price", product.getPrice());
-                        break;
+                        request.setAttribute("code", product.getCode());
+                        request.setAttribute("description", product.getDescription());
+                        request.setAttribute("price", product.getPrice());
                     } // fall through
                 case "addProduct":
                     url = "/product.jsp";
                     break;
                 case "deleteProduct":
-                    productCode = request.getParameter("code");
+                    productCode = request.getParameter("productCode");
                     if (ProductTable.exists(productCode)) {
                         Product product = ProductTable.selectProduct(productCode);
-                        session.setAttribute("code", product.getCode());
-                        session.setAttribute("description", product.getDescription());
-                        session.setAttribute("price", product.getPrice());
-                        break;
+                        request.setAttribute("code", product.getCode());
+                        request.setAttribute("description", product.getDescription());
+                        request.setAttribute("price", product.getPrice());
                     }
                     url = "/confirmDelete.jsp";
                     break;
@@ -95,6 +90,7 @@ public class ProductManagementServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         String action = request.getParameter("action");
         String productCode = request.getParameter("productCode");
+        String url = "/login.jsp";
         
         if (user != null) {
             
@@ -119,24 +115,24 @@ public class ProductManagementServlet extends HttpServlet {
                             product.setCode(code);
                             product.setDescription(description);
                             product.setPrice(Double.valueOf(price));
+                            ProductTable.updateProduct(product);
                         }
                     }
-                    getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
+                    url = "/products.jsp";
                     break;
                 case "deleteProduct":
                     if (ProductTable.exists(productCode)) {
                         Product product = ProductTable.selectProduct(productCode);
                         ProductTable.deleteProduct(product);
                     }
-                    getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
+                    url = "/products.jsp";
                     break;
             }
             
         }
-        else {
-            getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
-        }
-
+        List<Product> products = ProductTable.selectProducts();
+        request.setAttribute("products", products);
+        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     /**

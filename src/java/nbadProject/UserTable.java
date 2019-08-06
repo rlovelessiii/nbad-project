@@ -35,7 +35,7 @@ public class UserTable {
             ps.setString(2, user.getLastName());
             ps.setString(3, user.getEmail());
             ps.setString(4, user.getPassword());
-            ps.executeQuery();
+            ps.executeUpdate();
         }
         catch (SQLException e) {
             System.out.println(e);

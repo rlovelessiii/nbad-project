@@ -24,7 +24,7 @@
                 <th class="edit">&nbsp;</th>
                 <th class="delete">&nbsp;</th>
             </tr>
-            <c:forEach var="product" items="${products}">
+            <c:forEach var="product" items="${requestScope.products}">
                 <tr>
                     <td>${product.getCode()}</td>
                     <td>${product.getDescription()}</td>

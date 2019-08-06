@@ -6,7 +6,7 @@
 package nbadProject;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,6 +73,8 @@ public class MembershipServlet extends HttpServlet {
             if (user != null) {
                 if (user.getPassword().equals(request.getParameter("password"))) {
                     session.setAttribute("user", user);
+                    List<Product> products = ProductTable.selectProducts();
+                    request.setAttribute("products", products);
                     getServletContext().getRequestDispatcher("/products.jsp").forward(request, response);
                 }
             }
